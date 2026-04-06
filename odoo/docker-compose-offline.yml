@@ -1,0 +1,75 @@
+version: '3.9'
+
+services:
+  # Odoo Community 19
+  odoo:
+    image: odoo:19.0
+    container_name: odoo_community_19
+    depends_on:
+      - postgres
+    ports:
+      - "8069:8069"
+      - "8072:8072"
+    volumes:
+      - odoo-web-data:/var/lib/odoo
+      - ./odoo-custom-addons:/mnt/extra-addons
+    environment:
+      - HOST=postgres
+      - DATABASE=postgres
+      - POSTGRES_USER=odoo
+      - POSTGRES_PASSWORD=odoo_password
+      - USER=odoo
+      - PASSWORD=odoo_password
+    command: --workers=2 --max-cron-threads=1 --no-xmlrpc
+    restart: unless-stopped
+    networks:
+      - odoo_network
+    # Disable external network access for apps
+    dns:
+      - 8.8.8.8
+
+  # PostgreSQL Database
+  postgres:
+    image: postgres:15
+    container_name: odoo_postgres
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+      - ./postgres-backups:/backups
+    environment:
+      - POSTGRES_USER=odoo
+      - POSTGRES_PASSWORD=odoo_password
+      - POSTGRES_DB=postgres
+    ports:
+      - "5432:5432"
+    restart: unless-stopped
+    networks:
+      - odoo_network
+
+  # PGAdmin for database management (optional)
+  pgadmin:
+    image: dpage/pgadmin4:latest
+    container_name: odoo_pgadmin
+    depends_on:
+      - postgres
+    ports:
+      - "8080:80"
+    volumes:
+      - pgadmin-data:/var/lib/pgadmin
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=admin@odoo.local
+      - PGADMIN_DEFAULT_PASSWORD=admin_password
+    restart: unless-stopped
+    networks:
+      - odoo_network
+
+volumes:
+  postgres-data:
+    driver: local
+  odoo-web-data:
+    driver: local
+  pgadmin-data:
+    driver: local
+
+networks:
+  odoo_network:
+    driver: bridge

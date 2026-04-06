@@ -1,0 +1,15 @@
+EXPENSE REPORT - February 2026
+===============================
+Employee: John Doe
+Department: Engineering
+
+Date        Description             Amount
+2026-02-05  Office Supplies         $45.99
+2026-02-10  Client Lunch            $89.50
+2026-02-15  Software License        $199.00
+2026-02-20  Travel - Uber           $35.00
+                                        ------
+TOTAL:                              $369.49
+
+Approved by: Manager Name
+Date: February 25, 2026

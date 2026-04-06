@@ -1,0 +1,225 @@
+{
+  "main": {
+    "id": "276df1e235ea3b08",
+    "type": "split",
+    "children": [
+      {
+        "id": "02d46ba363d90d55",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "e507e742fb3bfdb7",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "SILVER_TIER_COMPLETE.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "SILVER_TIER_COMPLETE"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "63e02866f9d411ce",
+    "type": "split",
+    "children": [
+      {
+        "id": "5c298a5cdea1352b",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "49065ebeb49743bd",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Files"
+            }
+          },
+          {
+            "id": "0a3ff453c1c86e88",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Search"
+            }
+          },
+          {
+            "id": "2d44f285a2762ea3",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "3e594a5e71590748",
+    "type": "split",
+    "children": [
+      {
+        "id": "e5383bf175082909",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "fd29dc92b488ca4e",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks"
+            }
+          },
+          {
+            "id": "7547088b86d8fddd",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links"
+            }
+          },
+          {
+            "id": "9678643ae09ee138",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
+            }
+          },
+          {
+            "id": "2a5a555ec88e45fa",
+            "type": "leaf",
+            "state": {
+              "type": "all-properties",
+              "state": {
+                "sortOrder": "frequency",
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-archive",
+              "title": "All properties"
+            }
+          },
+          {
+            "id": "ba0f14b298ad5435",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Outline"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false,
+      "bases:Create new base": false
+    }
+  },
+  "active": "e507e742fb3bfdb7",
+  "lastOpenFiles": [
+    "Briefings/2026-03-30_Weekly_Briefing.md",
+    "Approved/EMAIL_APPROVAL_20260330_171551.md",
+    "Pending_Approval/EMAIL_APPROVAL_20260330_171551.md",
+    "scripts/create_email_draft.py",
+    "scripts/gmail_token.pickle",
+    "scripts/simple_send_email.py",
+    "scripts/simple_gmail_auth.py",
+    "Plans/PLAN_20260226_024359_FILE_20260226_024336_payment_request_PAY-2026-001.txt.md",
+    "Needs_Action/EMAIL_20260304_233940_DAILY GIVEAWAYS.md",
+    "Logs/step2_loaded.png",
+    "Logs/linkedin_error.png",
+    "Logs/final_result.png",
+    "Accounting/Partners.md",
+    "Briefings/Subscription_Audit_2026-03-05.md",
+    "Done/FB_POST_20260330_161154.md",
+    "Done/FB_POST_20260326_194302.md",
+    "Done/FB_POST_20260326_191819.md",
+    "Done/FB_POST_20260326_183458.md",
+    "Done/FB_POST_20260326_180624.md",
+    "Done/FB_POST_20260326_180326.md",
+    "Done/FB_POST_20260326_175943.md",
+    "Logs/facebook_2026-03-30.json",
+    "Done/FB_POST_20260308_235317.md",
+    "Approved/FB_POST_20260330_161154.md",
+    "Approved/FB_POST_20260326_194302.md",
+    "Approved/FB_POST_20260326_191819.md",
+    "Approved/FB_POST_20260326_183458.md",
+    "Approved/FB_POST_20260326_180624.md",
+    "Approved/FB_POST_20260326_180326.md",
+    "Approved/FB_POST_20260326_175943.md",
+    "Pending_Approval/FB_POST_20260330_161154.md",
+    "Briefings/2026-03-04_Weekly_Briefing.md",
+    "Dashboard.md",
+    "Approved/FB_POST_20260308_235317.md",
+    "Drop/expense_report_feb2026.txt",
+    "Drop/client_inquiry_techcorp.txt",
+    "Logs/2026-02-26.json",
+    "Logs/filesystem_watcher_state.txt",
+    "Drop/payment_request_PAY-2026-001.txt"
+  ]
+}

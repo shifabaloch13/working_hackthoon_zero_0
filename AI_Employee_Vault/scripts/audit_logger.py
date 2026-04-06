@@ -1,0 +1,210 @@
+"""
+Comprehensive Audit Logger - Gold Tier
+
+Logs all AI Employee actions, decisions, and state changes for compliance and debugging.
+Based on hackathon documentation requirements for comprehensive audit logging.
+
+Usage:
+    python audit_logger.py "D:/path/to/AI_Employee_Vault" --action email_send --to client@example.com
+"""
+
+import sys
+import json
+import argparse
+from pathlib import Path
+from datetime import datetime
+
+
+class AuditLogger:
+    def __init__(self, vault_path: str):
+        self.vault = Path(vault_path).resolve()
+        self.logs_folder = self.vault / 'Logs' / 'Audit'
+        self.logs_folder.mkdir(parents=True, exist_ok=True)
+    
+    def log_action(self, action_type: str, **kwargs):
+        """Log an action."""
+        log_entry = {
+            'timestamp': datetime.now().isoformat(),
+            'action_type': action_type,
+            'actor': 'ai_employee',
+            **kwargs
+        }
+        
+        log_file = self.logs_folder / f'{datetime.now().strftime("%Y-%m-%d")}.json'
+        
+        # Append as single-line JSON (one entry per line)
+        with open(log_file, 'a', encoding='utf-8') as f:
+            f.write(json.dumps(log_entry) + '\n')
+    
+    def log_decision(self, decision: str, reasoning: str, **kwargs):
+        """Log an AI decision with reasoning."""
+        self.log_action(
+            'decision',
+            decision=decision,
+            reasoning=reasoning,
+            **kwargs
+        )
+    
+    def log_state_change(self, entity: str, from_state: str, to_state: str, **kwargs):
+        """Log a state change."""
+        self.log_action(
+            'state_change',
+            entity=entity,
+            from_state=from_state,
+            to_state=to_state,
+            **kwargs
+        )
+    
+    def log_error(self, error_type: str, error_message: str, **kwargs):
+        """Log an error."""
+        self.log_action(
+            'error',
+            error_type=error_type,
+            error_message=error_message,
+            **kwargs
+        )
+    
+    def log_approval(self, approval_type: str, status: str, **kwargs):
+        """Log an approval action."""
+        self.log_action(
+            'approval',
+            approval_type=approval_type,
+            status=status,
+            **kwargs
+        )
+    
+    def get_audit_trail(self, start_date: str, end_date: str) -> list:
+        """Get audit trail for date range."""
+        trail = []
+        
+        for log_file in self.logs_folder.glob('*.json'):
+            file_date = log_file.stem
+            if start_date <= file_date <= end_date:
+                with open(log_file, 'r', encoding='utf-8') as f:
+                    for line in f:
+                        if line.strip():
+                            trail.append(json.loads(line))
+        
+        return trail
+    
+    def generate_report(self, start_date: str, end_date: str) -> Path:
+        """Generate audit report for date range."""
+        trail = self.get_audit_trail(start_date, end_date)
+        
+        # Analyze trail
+        actions_by_type = {}
+        errors = []
+        approvals = []
+        
+        for entry in trail:
+            action_type = entry.get('action_type', 'unknown')
+            actions_by_type[action_type] = actions_by_type.get(action_type, 0) + 1
+            
+            if action_type == 'error':
+                errors.append(entry)
+            elif action_type == 'approval':
+                approvals.append(entry)
+        
+        # Generate report
+        report_date = datetime.now().strftime('%Y-%m-%d')
+        report_file = self.logs_folder / f'Audit_Report_{start_date}_to_{end_date}.md'
+        
+        content = f"""---
+generated: {datetime.now().isoformat()}
+period: {start_date} to {end_date}
+type: audit_report
+---
+
+# Audit Report
+
+## Period: {start_date} to {end_date}
+
+## Summary
+
+- **Total Actions**: {len(trail)}
+- **Errors**: {len(errors)}
+- **Approvals**: {len(approvals)}
+
+## Actions by Type
+
+| Action Type | Count |
+|-------------|-------|
+"""
+        
+        for action_type, count in sorted(actions_by_type.items()):
+            content += f"| {action_type} | {count} |\n"
+        
+        if errors:
+            content += f"""
+## Errors
+
+| Timestamp | Type | Message |
+|-----------|------|---------|
+"""
+            for error in errors[:10]:  # Limit to 10
+                content += f"| {error['timestamp']} | {error.get('error_type', 'N/A')} | {error.get('error_message', 'N/A')} |\n"
+        
+        if approvals:
+            content += f"""
+## Approvals
+
+| Timestamp | Type | Status |
+|-----------|------|--------|
+"""
+            for approval in approvals[:10]:  # Limit to 10
+                content += f"| {approval['timestamp']} | {approval.get('approval_type', 'N/A')} | {approval.get('status', 'N/A')} |\n"
+        
+        content += f"""
+## Compliance Notes
+
+- All actions are logged with timestamps
+- Decisions include reasoning
+- State changes are tracked
+- Approval workflow is audited
+
+---
+*Generated by AI Employee Audit Logger (Gold Tier)*
+"""
+        
+        report_file.write_text(content, encoding='utf-8')
+        return report_file
+
+
+def main():
+    parser = argparse.ArgumentParser(description='Audit Logger for AI Employee')
+    parser.add_argument('vault_path', type=str, help='Path to the Obsidian vault')
+    parser.add_argument('--action', type=str, help='Action type to log')
+    parser.add_argument('--report', action='store_true', help='Generate audit report')
+    parser.add_argument('--start-date', type=str, help='Start date for report (YYYY-MM-DD)')
+    parser.add_argument('--end-date', type=str, help='End date for report (YYYY-MM-DD)')
+    
+    args = parser.parse_args()
+    
+    vault_path = Path(args.vault_path).resolve()
+    
+    if not vault_path.exists():
+        print(f'[ERROR] Vault path does not exist: {vault_path}')
+        sys.exit(1)
+    
+    logger = AuditLogger(str(vault_path))
+    
+    if args.report and args.start_date and args.end_date:
+        # Generate report
+        report_file = logger.generate_report(args.start_date, args.end_date)
+        print(f'[OK] Audit report saved to: {report_file}')
+    elif args.action:
+        # Log action
+        logger.log_action(args.action)
+        print(f'[OK] Action logged: {args.action}')
+    else:
+        # Show today's log
+        today = datetime.now().strftime('%Y-%m-%d')
+        trail = logger.get_audit_trail(today, today)
+        print(f'\nToday\'s Audit Trail ({today}):')
+        print(f'  Total actions: {len(trail)}')
+        for entry in trail[-10:]:  # Show last 10
+            print(f"  - {entry['timestamp']}: {entry['action_type']}")
+
+
+if __name__ == '__main__':
+    main()

@@ -1,0 +1,15 @@
+PAYMENT REQUEST
+===============
+
+Vendor: ABC Technologies
+Amount: $750.00
+Invoice: #INV-2026-001
+Due Date: March 15, 2026
+
+Description:
+Software licensing fees for Q1 2026
+
+Payment Method: Bank Transfer
+Account: ****1234
+
+APPROVAL REQUIRED: Yes (Amount > $500)

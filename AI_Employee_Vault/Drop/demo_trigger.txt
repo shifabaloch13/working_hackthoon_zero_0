@@ -1,0 +1,12 @@
+========================================
+AI EMPLOYEE - LIVE SYSTEM DEMONSTRATION
+========================================
+
+This script demonstrates the COMPLETE workflow:
+1. Gmail Watcher monitors for new emails
+2. Creates action files in Needs_Action/
+3. Orchestrator processes action files
+4. Creates Plan.md files
+5. Updates Dashboard.md
+
+Let's begin...

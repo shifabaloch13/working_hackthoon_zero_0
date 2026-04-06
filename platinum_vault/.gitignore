@@ -1,0 +1,71 @@
+# Platinum Tier - Synced Vault .gitignore
+# This file goes in the SYNCED vault (Git repository)
+# Secrets are NEVER committed to this repository
+
+# Environment files (contain secrets)
+.env
+.env.local
+.env.cloud
+.env.production
+
+# Credential files
+credentials.json
+facebook_config.json
+odoo_config.json
+*-config.json
+*-credentials.json
+
+# Key files
+*.pem
+*.key
+*.crt
+*.cer
+
+# Session files
+whatsapp_session/
+*.pickle
+*.pkl
+session-*.json
+
+# Local-only folders
+/In_Progress/*/
+.local/
+.cloud/
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Logs (keep recent, exclude old)
+Logs/*.log
+!Logs/recent.log
+
+# Temporary files
+*.tmp
+*.bak
+*.temp
+
+# Backup files
+*.sql
+*.backup
+backups/
+
+# Node modules (if any)
+node_modules/

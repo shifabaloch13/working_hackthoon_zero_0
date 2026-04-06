@@ -1,0 +1,12 @@
+
+PAYMENT REQUEST
+===============
+Request ID: PAY-2026-001
+Date: February 26, 2026
+
+Vendor: ABC Supplies
+Amount: $750.00
+Description: Office supplies for Q1
+Due Date: March 15, 2026
+
+Approval Required: Yes

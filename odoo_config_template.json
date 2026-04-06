@@ -1,0 +1,7 @@
+{
+  "odoo_url": "http://localhost:8069",
+  "database": "ai_employee_db",
+  "username": "admin",
+  "password": "your_secure_password",
+  "api_key": null
+}

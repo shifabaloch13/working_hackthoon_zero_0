@@ -1,0 +1,7 @@
+{
+  "access_token": "YOUR_FACEBOOK_PAGE_ACCESS_TOKEN",
+  "page_id": "YOUR_FACEBOOK_PAGE_ID",
+  "instagram_account_id": "YOUR_INSTAGRAM_BUSINESS_ACCOUNT_ID",
+  "app_id": "YOUR_FACEBOOK_APP_ID",
+  "app_secret": "YOUR_FACEBOOK_APP_SECRET"
+}
